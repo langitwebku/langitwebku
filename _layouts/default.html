@@ -3,47 +3,40 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 <link rel="icon" href="{{ site.baseurl }}/assets/images/logo.png">
-
 <title>{{ page.title }} | {{site.name}}</title>
 
 {% seo %}
 
+<!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://bootstrapcdn.com" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
 <link href="{{ site.baseurl }}/assets/css/screen.css" rel="stylesheet">
 <link href="{{ site.baseurl }}/assets/css/main.css" rel="stylesheet">
 
-<!-- jQuery diletakkan di atas agar script lain tidak error -->
-<script src="{{ site.baseurl }}/assets/js/jquery.min.js"></script>
+<!-- jQuery (Harus di atas untuk tema Mediumish) -->
+<script src="https://jquery.com"></script>
 
 </head>
 
 {% capture layout %}{% if page.layout %}layout-{{ page.layout }}{% endif %}{% endcapture %}
 <body class="{{layout}}">
 
-<!-- Begin Menu Navigation
-================================================== -->
+<!-- Navigasi -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
-
     <div class="container pr-0">
-
-        <!-- Begin Logo -->
+        <!-- Logo -->
         <a class="navbar-brand" href="{{ site.baseurl }}/">
             <img src="{{ site.baseurl }}/{{ site.logo }}" alt="{{ site.name }}">
         </a>
-        <!-- End Logo -->
 
+        <!-- Tombol Mobile -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarMediumish">
-
-            <!-- Begin Menu -->
+            <!-- Menu Utama -->
             <ul class="navbar-nav ml-auto">
-
                 <li class="nav-item">
                     <a class="nav-link" href="{{ site.baseurl }}/index.html">Blog</a>
                 </li>
@@ -66,55 +59,23 @@
                     <a class="nav-link" href="{{ site.baseurl }}/about">Tentang</a>
                 </li>
 
-                <li class="nav-item">
-                    <a target="_blank" class="nav-link" href="https://github.com"><i class="fab fa-github"></i> Github</a>
-                </li>
-
                 {% include search-lunr.html %}
-
             </ul>
-            <!-- End Menu -->
-
         </div>
-
     </div>
 </nav>
-<!-- End Navigation
-================================================== -->
 
 <div class="site-content">
-
     <div class="container">
-
-        <!-- Site Title -->
+        <!-- Judul Site -->
         <div class="mainheading">
             <h1 class="sitetitle">{{ site.name }}</h1>
-            <p class="lead">
-                {{ site.description }}
-            </p>
+            <p class="lead">{{ site.description }}</p>
         </div>
 
-        <!-- Content -->
+        <!-- Isi Konten -->
         <div class="main-content">
             {{ content }}
-        </div>
-
-    </div>
-
-    <!-- Categories Jumbotron -->
-    <div class="jumbotron fortags">
-        <div class="d-md-flex h-100">
-            <div class="col-md-4 transpdark align-self-center text-center h-100">
-                <div class="d-md-flex align-items-center justify-content-center h-100">
-                    <h2 class="d-md-block align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
-                </div>
-            </div>
-            <div class="col-md-8 p-5 align-self-center text-center">
-                {% assign categories_list = site.categories %}
-                {% for category in categories_list %}
-                    <a class="mt-1 mb-1" href="{{site.baseurl}}/categories#{{ category[0] | url_escape | strip | replace: ' ', '-' }}">{{ category[0] | camelcase }} ({{ category[1].size }})</a>
-                {% endfor %}
-            </div>
         </div>
     </div>
 
@@ -122,27 +83,28 @@
     <footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                <div class="col-md-6 text-center text-lg-left">
                     Copyright © {{ site.time | date: "%Y" }} {{ site.name }} 
                 </div>
-                <div class="col-md-6 col-sm-6 text-center text-lg-right">    
+                <div class="col-md-6 text-center text-lg-right">    
                     <a target="_blank" href="https://youtube.com">Solution iD</a>
                 </div>
             </div>
         </div>
     </footer>
+</div>
 
-</div> <!-- /.site-content -->
-
-<!-- Scripts di akhir agar loading cepat -->
-<script src="https://cloudflare.com" crossorigin="anonymous"></script>
-<script src="https://bootstrapcdn.com" crossorigin="anonymous"></script>
+<!-- SCRIPTS UTAMA (PENTING!) -->
+<!-- Popper & Bootstrap Bundle sudah jadi satu di sini -->
+<script src="https://jsdelivr.net"></script>
 <script src="{{ site.baseurl }}/assets/js/mediumish.js"></script>
 
+<!-- Defer Font & Icons -->
 <noscript id="deferred-styles">
     <link href="https://googleapis.com" rel="stylesheet">
-    <link rel="stylesheet" href="https://fontawesome.com" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fontawesome.com">
 </noscript>
+
 <script>
     var loadDeferredStyles = function() {
         var addStylesNode = document.getElementById("deferred-styles");
